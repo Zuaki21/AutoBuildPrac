@@ -1,7 +1,9 @@
 #https://zenn.dev/nikaera/articles/unity-gameci-github-actions
 name: Run the WebGL build
 on:
-    workflow_dispatch: {}
+    push:
+        branches:
+            - main
 jobs:
     build:
         name: Run the WebGL build
