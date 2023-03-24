@@ -28,7 +28,7 @@ public class Player : MonoBehaviour
         //移動可能な範囲は画面内に制限Mathf.Clamp
         transform.position = new Vector3(Mathf.Clamp(transform.position.x, -8f, 8f), transform.position.y, transform.position.z);
     }
-
+    
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Ground")
