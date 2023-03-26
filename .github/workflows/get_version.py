@@ -20,5 +20,5 @@ if __name__ == "__main__":
     args = sys.argv
     # 引数があれば、実行
     if len(args) > 1:
-        version=get_editor_version(args[1])
-        print(version)
+        version = get_editor_version(args[1])
+        sys.stdout.write(version)
