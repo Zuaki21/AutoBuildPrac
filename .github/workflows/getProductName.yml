@@ -19,9 +19,9 @@ jobs:
               id: get_product_name
               run: |
                   echo "Extracting version number"
-                  product_name=$(python .github/workflows/get_product_name.py ProjectSettings/ProjectSettings.asset)
-                  echo "::set-output name=product_name::$product_name"
+                  name=$(python .github/workflows/get_product_name.py ProjectSettings/ProjectSettings.asset)
+                  echo "::set-output name=product_name::$name"
 
             - name: Display product name
-              run: echo "Product Name is ${{ steps.get_version.outputs.product_name }}"
+              run: echo "Product Name is ${{ steps.get_product_name.outputs.product_name }}"
               shell: bash

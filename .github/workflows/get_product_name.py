@@ -32,5 +32,4 @@ if __name__ == "__main__":
     # 引数があれば、実行
     if len(args) > 1:
         product_name = get_product_name(args[1])
-        print("ProductName is " + product_name + ".")
         sys.stdout.write(product_name)
