@@ -24,7 +24,8 @@ def main():
     }
 
     # リポジトリ情報をJSONファイルに保存する
-    with open("build/WebGL/WebGL/repo_info.json", "w") as f:
+    file_path = "build/WebGL/WebGL/repo_info.json"
+    with open(file_path, "w") as f:
         json.dump(repo_info, f)
 
 

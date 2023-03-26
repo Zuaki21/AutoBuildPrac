@@ -1,8 +1,16 @@
 #https://zenn.dev/nikaera/articles/unity-gameci-github-actions
 
-name: Run EditMode and PlayMode Test
+name: Run Test at EditMode and PlayMode
 on:
-    workflow_dispatch: {}
+    workflow_dispatch:
+    inputs:
+        testMode:
+            type: choice
+            description: Test Mode
+            options:
+                - All
+                - PlayMode
+                - EditMode
 jobs:
     get_version:
         name: get Unity version
@@ -61,7 +69,7 @@ jobs:
 
                   # 実行したいテストの種類を指定できる
                   # 指定可能な値は All, PlayMode, EditMode
-                  testMode: All
+                  testMode: ${{ github.event.inputs.target }}
 
                   # テスト実行時に利用したい Docker イメージを明示的に指定できる
                   # customImage: 'unityci/editor:2020.1.14f1-base-0'
