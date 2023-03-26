@@ -16,7 +16,7 @@ jobs:
                   python-version: "3.x"
 
             - name: Get version number
-              run: python get_version.py ProjectSettings/ProjectVersion.txt
+              run: python .github/workflows/get_version.py ProjectSettings/ProjectVersion.txt
               id: get_version
 
             - name: Display version number
