@@ -40,7 +40,7 @@ jobs:
                   folder: build/WebGl/WebGL
                   
                   # 上記から取り出したフォルダの配置先のフォルダ
-                  publish_dir: project1
+                  target-folder: project1
 
             # Builder で出力した WebGL ビルドをアーティファクトでダウンロード可能にする
             - name: Upload the WebGL Build
