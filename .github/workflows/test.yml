@@ -3,14 +3,14 @@
 name: Run Test at EditMode and PlayMode
 on:
     workflow_dispatch:
-    inputs:
-        testMode:
-            type: choice
-            description: Test Mode
-            options:
-                - All
-                - PlayMode
-                - EditMode
+        inputs:
+            testMode:
+                type: choice
+                description: Test Mode
+                options:
+                    - All
+                    - PlayMode
+                    - EditMode
 jobs:
     get_version:
         name: get Unity version
