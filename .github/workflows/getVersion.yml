@@ -16,8 +16,11 @@ jobs:
                   python-version: "3.x"
 
             - name: Get version number
-              run: python .github/workflows/get_version.py ProjectSettings/ProjectVersion.txt
               id: get_version
+              run: |
+                echo "Extracting version number"
+                version=$(python .github/workflows/get_version.py ProjectSettings/ProjectVersion.txt)
+                echo "::set-output name=version::$version"
 
             - name: Display version number
               run: echo "Editor version is ${{ steps.get_version.outputs.version }}"
