@@ -36,6 +36,21 @@ jobs:
             - name: Check out my unity project.
               uses: actions/checkout@v2
 
+            # GameCI の Builder を利用して、
+            # Unity プロジェクトのビルドを実行する
+            - name: Run the WebGL build
+              uses: game-ci/unity-builder@v2
+              env:
+                  UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+              with:
+                  # 今回は WebGL ビルドを行いたいため WebGL を指定する
+                  # WebGL 以外の指定可能な値は下記に記載の値が利用可能
+                  # ref: https://docs.unity3d.com/ScriptReference/BuildTarget.html
+                  targetPlatform: WebGL
+
+                  # unityVersion: 2021.3.19f1
+                  unityVersion: ${{needs.get_version.outputs.version}}
+
             # pythonプログラムを実行
             - name: Set up Python
               uses: actions/setup-python@v2
@@ -61,21 +76,6 @@ jobs:
                   PRODUCT_NAME: ${{ steps.get_product_name_string.outputs.product_name }}
                   GITHUB_REPOSITORY: ${{ github.repository }}
                   UNITY_VERSION: ${{ secrets.UNITY_LICENSE }}
-
-            # GameCI の Builder を利用して、
-            # Unity プロジェクトのビルドを実行する
-            - name: Run the WebGL build
-              uses: game-ci/unity-builder@v2
-              env:
-                  UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-              with:
-                  # 今回は WebGL ビルドを行いたいため WebGL を指定する
-                  # WebGL 以外の指定可能な値は下記に記載の値が利用可能
-                  # ref: https://docs.unity3d.com/ScriptReference/BuildTarget.html
-                  targetPlatform: WebGL
-
-                  # unityVersion: 2021.3.19f1
-                  unityVersion: ${{needs.get_version.outputs.version}}
 
             # フッター追加
             - name: Add footer to HTML
