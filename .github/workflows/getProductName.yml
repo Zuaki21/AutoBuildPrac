@@ -16,12 +16,12 @@ jobs:
                   python-version: "3.x"
 
             - name: Get product name string
-              id: get_product_name
+              id: get_product_name_string
               run: |
                   echo "Extracting version number"
                   name=$(python .github/workflows/get_product_name.py ProjectSettings/ProjectSettings.asset)
                   echo "::set-output name=product_name::$name"
 
             - name: Display product name
-              run: echo "Product Name is ${{ steps.get_product_name.outputs.product_name }}"
+              run: echo "Product Name is ${{ steps.get_product_name_string.outputs.product_name }}"
               shell: bash

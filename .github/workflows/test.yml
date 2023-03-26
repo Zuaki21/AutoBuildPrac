@@ -8,8 +8,7 @@ jobs:
         name: get Unity version
         runs-on: ubuntu-latest
         outputs:
-            outputs:
-            output1: ${{ steps.get_version.outputs.version }}
+            version: ${{ steps.get_version_number.outputs.version }}
         steps:
             - name: Checkout code
               uses: actions/checkout@v2
@@ -20,7 +19,7 @@ jobs:
                   python-version: "3.x"
 
             - name: Get version number
-              id: get_version
+              id: get_version_number
               run: |
                   echo "Extracting version number"
                   version=$(python .github/workflows/get_version.py ProjectSettings/ProjectVersion.txt)
