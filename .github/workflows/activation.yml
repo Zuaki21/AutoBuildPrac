@@ -8,8 +8,7 @@ jobs:
         name: get Unity version
         runs-on: ubuntu-latest
         outputs:
-            outputs:
-            output1: ${{ steps.step1.outputs.version }}
+            version: ${{ steps.get_version_number.outputs.version }}
         steps:
             - name: Checkout code
               uses: actions/checkout@v2
@@ -20,7 +19,7 @@ jobs:
                   python-version: "3.x"
 
             - name: Get version number
-              id: get_version
+              id: get_version_number
               run: |
                   echo "Extracting version number"
                   version=$(python .github/workflows/get_version.py ProjectSettings/ProjectVersion.txt)
@@ -30,6 +29,9 @@ jobs:
         runs-on: ubuntu-latest
         needs: get_version
         steps:
+            - name: Display Unity Version
+              run: echo "Unity Version is ${{needs.get_version.outputs.version}}"
+              shell: bash
             # GameCI の Activation を利用して alf ファイルを発行する
             - name: Request manual activation file
               id: getManualLicenseFile

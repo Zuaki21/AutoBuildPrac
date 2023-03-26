@@ -11,7 +11,7 @@ jobs:
         runs-on: ubuntu-latest
         outputs:
             outputs:
-            output1: ${{ steps.step1.outputs.version }}
+            output1: ${{ steps.get_version.outputs.version }}
         steps:
             - name: Checkout code
               uses: actions/checkout@v2
@@ -27,6 +27,27 @@ jobs:
                   echo "Extracting version number"
                   version=$(python .github/workflows/get_version.py ProjectSettings/ProjectVersion.txt)
                   echo "::set-output name=version::$version"
+    get_product_name:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v2
+
+            - name: Setup Python
+              uses: actions/setup-python@v2
+              with:
+                  python-version: "3.x"
+
+            - name: Get product name string
+              id: get_product_name
+              run: |
+                  echo "Extracting version number"
+                  name=$(python .github/workflows/get_product_name.py ProjectSettings/ProjectSettings.asset)
+                  echo "::set-output name=product_name::$name"
+
+            - name: Display product name
+              run: echo "Product Name is ${{ steps.get_product_name.outputs.product_name }}"
+              shell: bash
     build:
         name: Run the WebGL build
         runs-on: ubuntu-latest
