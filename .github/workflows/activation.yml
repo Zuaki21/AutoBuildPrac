@@ -1,12 +1,13 @@
 #https://zenn.dev/nikaera/articles/unity-gameci-github-actions
 
-name: aluファイルの入手
+name: Acquire activation file
 on:
     workflow_dispatch: {}
 jobs:
     get_version:
-        name: Unityバージョン情報を取得しています
+        name: get Unity version
         runs-on: ubuntu-latest
+        outputs:
             outputs:
             output1: ${{ steps.step1.outputs.version }}
         steps:
