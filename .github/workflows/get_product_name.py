@@ -14,7 +14,7 @@ def get_product_name(file_path):
     match = re.search(pattern, contents)
     if match:
         product_name = match.group(1)
-        #もし、"で囲まれていたら、"を削除
+        # もし、"で囲まれていたら、"を削除
         if product_name.startswith('"') and product_name.endswith('"'):
             product_name = product_name[1:-1]
 
@@ -32,4 +32,4 @@ if __name__ == "__main__":
     # 引数があれば、実行
     if len(args) > 1:
         product_name = get_product_name(args[1])
-        print(product_name)
+        sys.stdout.write(product_name)
