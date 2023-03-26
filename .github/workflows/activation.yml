@@ -5,7 +5,7 @@ on:
     workflow_dispatch: {}
 jobs:
     get_version:
-        name: Unityのバージョン情報を取得
+        name: get Unity version
         runs-on: ubuntu-latest
         outputs:
             outputs:
