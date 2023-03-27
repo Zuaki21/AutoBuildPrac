@@ -1,9 +1,9 @@
 #https://zenn.dev/nikaera/articles/unity-gameci-github-actions
 name: Run the WebGL build
 on:
-    # push:
-    #     branches:
-    #         - main
+    push:
+        branches:
+            - main
     workflow_dispatch: {}
 jobs:
     get_version:
@@ -79,7 +79,7 @@ jobs:
               env:
                   PRODUCT_NAME: ${{ steps.get_product_name_string.outputs.product_name }}
                   GITHUB_REPOSITORY: ${{ github.repository }}
-                  UNITY_VERSION: ${{ secrets.UNITY_LICENSE }}
+                  UNITY_VERSION: ${{needs.get_version.outputs.version}}
 
             # フッター追加
             - name: Add footer to HTML
