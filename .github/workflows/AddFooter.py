@@ -52,7 +52,7 @@ def add_footer(html_file_path):
 def get_footer():
     footer_html = f'''
     <footer style="display: flex; justify-content: space-between; align-items: center;">
-        <a href="../index.html" style="margin-left: 10px;">ホームへ戻る</a>
+        <a href="../" style="margin-left: 10px;">ホームへ戻る</a>
         <a style="margin-right: 10px; margin-left: auto"> 最終更新 {get_last_updated()} </a>
     </footer>
     '''
