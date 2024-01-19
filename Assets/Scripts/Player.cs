@@ -17,7 +17,7 @@ namespace Zuaki
         // Update is called once per frame
         void Update()
         {
-            //Spacebar to jump
+            //SpaceBar to jump
             if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
             {
                 rb.AddForce(Vector2.up * 10, ForceMode2D.Impulse);
