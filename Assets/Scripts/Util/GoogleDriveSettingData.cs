@@ -1,9 +1,8 @@
+#if UNITY_EDITOR
 using UnityEngine;
 using System.Collections;
-#if UNITY_EDITOR
 using UnityEditor;
 using Unity.EditorCoroutines.Editor;
-#endif
 
 [CreateAssetMenu(fileName = "GoogleDriveSettingData", menuName = "Zuaki/GoogleDriveSettingData", order = 100)]
 
@@ -28,7 +27,6 @@ public class GoogleDriveSettingData : ScriptableObject
     };
     [SerializeField, Header("デバッグログに詳細を表示する")] bool debugLog = false;
 
-#if UNITY_EDITOR
     private void OnValidate()
     {
         //localFolderが変更されたらフォルダかどうかを確認
@@ -56,11 +54,9 @@ public class GoogleDriveSettingData : ScriptableObject
     {
         Application.OpenURL("https://drive.google.com/drive/folders/" + googleDriveFolderID);
     }
-#endif
 }
 
 //インスペクタにDownloadボタンを表示する
-#if UNITY_EDITOR
 [CustomEditor(typeof(GoogleDriveSettingData))]
 
 public class GoogleDriveSettingDataEditor : Editor

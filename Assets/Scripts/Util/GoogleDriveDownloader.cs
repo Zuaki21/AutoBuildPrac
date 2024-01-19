@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using UnityEngine;
 using UnityEditor;
 using UnityGoogleDrive;
@@ -223,5 +224,5 @@ public static class GoogleDriveDownloader
             }
         }
     }
-
 }
+#endif
